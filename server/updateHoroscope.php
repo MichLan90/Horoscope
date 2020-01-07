@@ -8,11 +8,14 @@
             
             if (isset($_POST["date"])) {
 
+                if(isset($_SESSION["sign"])) {
+
                 require("HoroscopeList.php");
 
                 $_SESSION["sign"] = serialize(getHoroscope($_POST["date"])); 
 
                 echo json_encode(unserialize($_SESSION["sign"]));
+                }
 
             } else {
                 echo json_encode("Date is not set");
